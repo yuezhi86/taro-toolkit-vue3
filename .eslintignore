@@ -1,0 +1,4 @@
+node_modules
+dist
+*.js
+src/libs/vant-weapp

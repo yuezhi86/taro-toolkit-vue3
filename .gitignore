@@ -1,0 +1,12 @@
+dist/
+deploy_versions/
+.temp/
+.rn_temp/
+node_modules/
+.DS_Store
+.swc
+.idea
+/auto-imports.d.ts
+/.eslintrc-auto-import.json
+/components.d.ts
+src/project.private.config.json
