@@ -11,14 +11,12 @@ export type StorageInst = {
 
 let inst: StorageInst;
 
-const getInst = () => {
+export const createStorageInst = (localStorageKey: string) => {
   if (inst) {
     return inst;
   } else {
-    inst = new Storage(localStorageKey) as any;
+    inst = new Storage(localStorageKey) as StorageInst;
 
     return inst;
   }
 };
-
-export default getInst();

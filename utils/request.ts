@@ -32,6 +32,7 @@ export const createRequest = (options: CreateRequestOptions) => {
     getRequestHeaders,
     navigateToLoginPage
   } = options;
+
   return (url: string, options: RequestOptions = {}) => {
     return new Promise<any>(async (resolve, reject) => {
       // 拦截返回结果，对retCode统一处理

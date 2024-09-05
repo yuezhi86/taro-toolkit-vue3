@@ -1,7 +1,5 @@
-import '../types/global';
-
-export { default as storage } from './storage';
-export { default as showToast } from './showToast';
+export * from './storage';
+export * from './showToast';
 export * from './errorModal';
 export * from './request';
 export * from './upload';

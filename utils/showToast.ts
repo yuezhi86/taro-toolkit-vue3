@@ -6,7 +6,7 @@ type Options = {
   [propName: string]: any;
 };
 
-function showToast(title: string, options: Options = {}) {
+export const showToast = (title: string, options: Options = {}) => {
   const app = Taro.getApp();
 
   app.toastTimer = app.toastTimer || [];
@@ -44,6 +44,4 @@ function showToast(title: string, options: Options = {}) {
   };
 
   return Taro.showToast(toastOptions as any);
-}
-
-export default showToast;
+};
