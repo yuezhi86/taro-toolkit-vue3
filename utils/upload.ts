@@ -23,7 +23,7 @@ export const createUpload = (options: CreateRequestOptions) => {
   } = options;
 
   return (url: string, filePath: string, options: UploadOptions = {}) => {
-    return new Promise<any>((resolve, reject) => {
+    return new Promise<any>(async (resolve, reject) => {
       // 拦截返回结果，对retCode统一处理
       const catchRes = options.catchRes === undefined ? true : options.catchRes;
 

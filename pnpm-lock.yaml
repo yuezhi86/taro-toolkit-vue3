@@ -12,7 +12,6 @@ specifiers:
   '@tarojs/helper': 3.6.35
   '@tarojs/plugin-framework-vue3': 3.6.35
   '@tarojs/plugin-html': 3.6.35
-  '@tarojs/plugin-platform-weapp': 3.6.35
   '@tarojs/plugin-vue-devtools': ^3.6.35
   '@tarojs/runtime': 3.6.35
   '@tarojs/shared': 3.6.35
@@ -38,7 +37,6 @@ specifiers:
   eslint-plugin-prettier: ^5.1.3
   eslint-plugin-vue: ^9.26.0
   lodash-es: ^4.17.21
-  pinia: ^2.0.33
   postcss: ^8.4.38
   postcss-rem-to-responsive-pixel: ^6.0.1
   prettier: ^3.3.2
@@ -64,14 +62,12 @@ dependencies:
   '@tarojs/helper': 3.6.35
   '@tarojs/plugin-framework-vue3': 3.6.35_lt2zch6za3rpvr6ns2g2xjiiku
   '@tarojs/plugin-html': 3.6.35_@tarojs+taro@3.6.35
-  '@tarojs/plugin-platform-weapp': 3.6.35_kq5fmigsrcnfkcxjh4g4fjhhbq
   '@tarojs/runtime': 3.6.35_@tarojs+shared@3.6.35
   '@tarojs/shared': 3.6.35
   '@tarojs/taro': 3.6.35_d37pykosbapt4difvqncxbpjee
   '@vueuse/core': 10.11.1_vue@3.5.1
   dayjs: 1.11.13
   lodash-es: 4.17.21
-  pinia: 2.2.2_typescript@5.5.4+vue@3.5.1
   vue: 3.5.1_typescript@5.5.4
 
 devDependencies:
@@ -2730,6 +2726,7 @@ packages:
       - '@swc/helpers'
       - '@tarojs/taro'
       - supports-color
+    dev: true
 
   /@tarojs/plugin-vue-devtools/3.6.35_4yqrfiiw7r5yxjbf3u6bvhtoiq:
     resolution: {integrity: sha512-23OiYyn6sx6+M4uOpPBcPiXnTjWxOTvfapJH/xUIHsq7WaVTUnL5/ZvCvs5wc32OgGm8EmltwNlz2ht5H3sXTg==}
@@ -3616,10 +3613,6 @@ packages:
       - walrus
       - whiskers
     dev: true
-
-  /@vue/devtools-api/6.6.3:
-    resolution: {integrity: sha512-0MiMsFma/HqA6g3KLKn+AGpL1kgKhFWszC9U29NfpWK5LE7bjeXxySWJrOJ77hBz+TBrBQ7o4QJqbPbqbs8rJw==}
-    dev: false
 
   /@vue/devtools/6.0.0-beta.15:
     resolution: {integrity: sha512-zTo89V+ztGiEpjsRkJYOS0K/6mIqrb+Ia6HT+CXczrGRC297d7SqP5GBXn2HSbaJiSWNdoTLbQ2tm7uj+IBoqQ==}
@@ -9629,24 +9622,6 @@ packages:
   /pify/4.0.1:
     resolution: {integrity: sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==}
     engines: {node: '>=6'}
-
-  /pinia/2.2.2_typescript@5.5.4+vue@3.5.1:
-    resolution: {integrity: sha512-ja2XqFWZC36mupU4z1ZzxeTApV7DOw44cV4dhQ9sGwun+N89v/XP7+j7q6TanS1u1tdbK4r+1BUx7heMaIdagA==}
-    peerDependencies:
-      '@vue/composition-api': ^1.4.0
-      typescript: '>=4.4.4'
-      vue: ^2.6.14 || ^3.3.0
-    peerDependenciesMeta:
-      '@vue/composition-api':
-        optional: true
-      typescript:
-        optional: true
-    dependencies:
-      '@vue/devtools-api': 6.6.3
-      typescript: 5.5.4
-      vue: 3.5.1_typescript@5.5.4
-      vue-demi: 0.14.10_vue@3.5.1
-    dev: false
 
   /pinkie-promise/2.0.1:
     resolution: {integrity: sha512-0Gni6D4UcLTbv9c57DfxDGdr41XfgUjqWZu492f0cIGr16zDU06BWP/RAEvOuo7CQ0CNjHaLlM59YJJFm3NWlw==}

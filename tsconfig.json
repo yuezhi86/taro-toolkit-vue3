@@ -21,6 +21,11 @@
     "paths": {},
     "typeRoots": ["node_modules/@types"]
   },
-  "include": ["./types/global.d.ts", "./types/vue.d.ts"],
+  "include": [
+    "./types/global.d.ts",
+    "./types/vue.d.ts",
+    "./**/*.ts",
+    "./**/*.vue"
+  ],
   "compileOnSave": false
 }
