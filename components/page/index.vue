@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, computed, provide, useSlots } from 'vue';
+import { computed, provide, useSlots } from 'vue';
 import LoadingView from '../loading-view/index.vue';
 import { Toast as NutToast, Dialog as NutDialog } from '@nutui/nutui-taro';
 
@@ -69,6 +69,7 @@ defineExpose({
 });
 </script>
 <script lang="ts">
+import { reactive } from 'vue';
 const useToast = () => {
   const toast = reactive({
     show: false,
