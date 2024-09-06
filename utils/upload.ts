@@ -38,7 +38,7 @@ export const createUpload = (options: CreateRequestOptions) => {
       options.url = options.customDomain ? url : `${requestDomain}${url}`;
       options.name = options.name ?? 'file';
       options.filePath = filePath;
-      options.header = getRequestHeaders?.() ?? {};
+      options.header = await getRequestHeaders?.() ?? {};
       options.success = (response: any) => {
         if (response.statusCode === 200) {
           let res = response.data;

@@ -112,7 +112,7 @@ export const createRequest = (options: CreateRequestOptions) => {
         reject(err);
       };
 
-      options.header = getRequestHeaders?.() ?? {};
+      options.header = await getRequestHeaders?.() ?? {};
 
       options.contentType = options.contentType || 'json';
 

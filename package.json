@@ -1,20 +1,7 @@
 {
   "name": "taro-toolkit-vue3",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
-  "templateInfo": {
-    "name": "vue3-pinia",
-    "typescript": true,
-    "css": "sass"
-  },
-  "scripts": {
-    "postinstall": "weapp-tw patch"
-  },
-  "browserslist": [
-    "last 3 versions",
-    "Android >= 4.1",
-    "ios >= 8"
-  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
@@ -26,14 +13,12 @@
     "@tarojs/helper": "3.6.35",
     "@tarojs/plugin-framework-vue3": "3.6.35",
     "@tarojs/plugin-html": "3.6.35",
-    "@tarojs/plugin-platform-weapp": "3.6.35",
     "@tarojs/runtime": "3.6.35",
     "@tarojs/shared": "3.6.35",
     "@tarojs/taro": "3.6.35",
     "@vueuse/core": "^10.11.0",
     "dayjs": "^1.11.11",
     "lodash-es": "^4.17.21",
-    "pinia": "^2.0.33",
     "vue": "^3.2.29"
   },
   "devDependencies": {
