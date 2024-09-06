@@ -1,0 +1,181 @@
+@mixin clearfix-mixin() {
+  &::after {
+    content: ' ';
+    display: table;
+    clear: both;
+  }
+}
+
+// 在父级调用 clearfix 混合，即可清除浮动
+@mixin clearfix() {
+  @include clearfix-mixin;
+}
+
+// 单行文本溢出添加省略号
+@mixin text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal !important;
+  word-break: normal !important;
+}
+
+// 多行文本溢出添加省略号
+@mixin clamp($lines) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
+// 定义左右 margin
+@mixin margin-h($margin) {
+  margin-right: $margin;
+  margin-left: $margin;
+}
+
+// 定义上下 margin
+@mixin margin-v($margin) {
+  margin-top: $margin;
+  margin-bottom: $margin;
+}
+
+// 定义左右 padding
+@mixin padding-h($padding) {
+  padding-right: $padding;
+  padding-left: $padding;
+}
+
+// 定义上下 padding
+@mixin padding-v($padding) {
+  padding-top: $padding;
+  padding-bottom: $padding;
+}
+
+@mixin border($border-color) {
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    content: '';
+    border: 1px solid $border-color;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+    @content;
+  }
+}
+
+@mixin border-h($border-color, $z-index: 20) {
+  position: absolute;
+  left: 0;
+  z-index: $z-index;
+  width: 200%;
+  content: '';
+  border-bottom: 1px solid $border-color;
+  transform: scale(0.5);
+  @content;
+}
+
+@mixin border-v($border-color, $z-index: 20) {
+  position: absolute;
+  top: 0;
+  z-index: $z-index;
+  height: 200%;
+  content: '';
+  border-right: 1px solid $border-color;
+  transform: scale(0.5);
+  @content;
+}
+
+@mixin border-bottom($border-color, $z-index: 20) {
+  &::before {
+    @include border-h($border-color, $z-index) {
+      transform-origin: 0 100%;
+    }
+    bottom: 0;
+    @content;
+  }
+}
+
+@mixin border-top($border-color, $z-index: 20) {
+  &::before {
+    @include border-h($border-color, $z-index) {
+      transform-origin: 0 0;
+    }
+    top: 0;
+    @content;
+  }
+}
+
+@mixin border-right($border-color, $z-index: 20) {
+  &::before {
+    @include border-v($border-color, $z-index) {
+      transform-origin: right 0;
+    }
+    right: 0;
+    @content;
+  }
+}
+
+@mixin border-left($border-color, $z-index: 20) {
+  &::before {
+    @include border-v($border-color, $z-index) {
+      transform-origin: 0 0;
+    }
+    left: 0;
+    @content;
+  }
+}
+
+@mixin border-circle($border-color) {
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    content: '';
+    border: 1px solid $border-color;
+    border-radius: 50%;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+  }
+}
+
+@mixin position-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin position-center-y {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin position-center-x {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// 灰度
+@mixin gray {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+// 文本断行
+@mixin text-break($space: null) {
+  word-wrap: break-word;
+  word-break: break-word;
+
+  @if ($space != null) {
+    white-space: $space;
+  }
+}

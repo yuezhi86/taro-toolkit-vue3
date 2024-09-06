@@ -1,0 +1,26 @@
+<view class="van-index-bar">
+  <slot />
+
+  <view
+    wx:if="{{ showSidebar }}"
+    class="van-index-bar__sidebar"
+    catch:tap="onClick"
+    catch:touchmove="onTouchMove"
+    catch:touchend="onTouchStop"
+    catch:touchcancel="onTouchStop"
+  >
+    <view
+      wx:for="{{ indexList }}"
+      wx:key="index"
+      class="van-index-bar__index"
+      style="z-index: {{ zIndex + 1 }}; color: {{ activeAnchorIndex === index - (iphone12?1:0) ? highlightColor : '' }}"
+      data-index="{{ index  }}"
+    >
+      {{ item }}
+     <view class="bubble" wx:if="{{showBubble && bubbleIndex === item}}">
+        <image class="bubble-img" mode="aspectFill" src="https://assets.speedomes.com/images/mp/bubble.png" />
+        <text class="bubble-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+</view>

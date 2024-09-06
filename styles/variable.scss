@@ -1,0 +1,75 @@
+$color-def: #262626;
+$color-second: #565656;
+$color-primary: #c0d223;
+
+$border-color-def: #e5e5e5;
+$bg-color: #f5f5f5;
+
+$font-family:
+  PingFangSC,
+  PingFang SC,
+  sans-serif;
+$font-family-medium: PingFangSC-Medium, sans-serif;
+$font-family-regular: PingFangSC-Regular, sans-serif;
+$font-family-semibold: PingFangSC-Semibold, sans-serif;
+$font-family-number: DINAlternate, sans-serif;
+
+:root,
+page {
+  --border-color-def: #e5e5e5;
+  --bg-color-def: #f5f5f5;
+
+  --nut-primary-color: #c0d223;
+  --nut-primary-color-end: var(--nut-primary-color);
+
+  --nut-text-color: #262626;
+
+  --nut-space-gap: 24px;
+
+  --nut-cell-padding: 32px;
+  --nut-cell-border-radius: 16px;
+  --nut-cell-after-border-bottom: 1px solid var(--border-color-def);
+  --nut-cell-box-shadow: 0 0 18px 0 rgba(0, 0, 0, 0.12);
+
+  --nut-button-plain-background-color: rgba(192, 210, 35, 0.1);
+  --nut-button-default-color: rgba(0, 0, 0, 0.65);
+  --nut-button-default-border-color: rgba(0, 0, 0, 0.15);
+  --nut-button-small-height: 64px;
+  --nut-button-small-padding: 0 32px;
+  --nut-button-small-font-size: 28px;
+  --nut-button-default-height: 88px;
+  --nut-button-default-padding: 0 32px;
+  --nut-button-default-font-size: 32px;
+
+  --nut-tag-height: 36px;
+  --nut-tag-font-size: 20px;
+  --nut-tag-primary-background-color: #2c68ff;
+  --nut-tag-success-background-color: #0ed57d;
+  --nut-tag-warning-background-color: #ff9c00;
+  --nut-tag-danger-background-color: #f52f3e;
+
+  --nut-dialog-header-font-weight: 600;
+  --nut-popup-border-radius: 16px;
+
+  --nut-tabs-titles-background-color: #fff;
+  --nut-tabs-horizontal-titles-height: 100px;
+  --nut-tabs-titles-item-color: rgba(0, 0, 0, 0.45);
+  --nut-tabs-titles-item-active-color: rgba(0, 0, 0, 0.85);
+  --nut-tabs-horizontal-tab-line-color: var(--nut-primary-color);
+  --nut-tabs-horizontal-titles-item-active-line-width: 28px;
+
+  --nut-searchbar-padding: 12px 32px;
+  --nut-searchbar-input-background: rgba(0, 0, 0, 0.04);
+  --nut-searchbar-input-box-shadow: none;
+  --nut-searchbar-input-border-radius: 8px;
+  --nut-searchbar-input-padding: 0;
+  --nut-searchbar-input-bar-placeholder-color: rgba(0, 0, 0, 0.25);
+
+  --nut-radio-label-font-color: rgba(0, 0, 0, 0.65);
+  --nut-radio-button-padding: 12px 32px;
+
+  --nut-navbar-title-font-color: #333;
+
+  --nut-uploader-picture-width: 160px;
+  --nut-uploader-picture-height: 160px;
+}
