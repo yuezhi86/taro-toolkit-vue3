@@ -146,7 +146,7 @@ watch(visible, (show) => {
     });
 
     if (show) {
-      nextTick(() => {
+      Taro.nextTick(() => {
         if (props.scrollIntoId) {
           scrollIntoView.value = `item-${props.scrollIntoId}`;
         }

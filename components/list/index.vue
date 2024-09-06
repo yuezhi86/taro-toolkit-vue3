@@ -235,7 +235,7 @@ Taro.useDidShow(() => {
   if (isReady.value && props.onShowRefresh) {
     refresh();
   } else if (!isReady.value) {
-    nextTick(() => {
+    Taro.nextTick(() => {
       fetchData();
     });
   }
