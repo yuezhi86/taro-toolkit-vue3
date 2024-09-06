@@ -24,6 +24,7 @@
 <script setup lang="ts">
 import { ref, watch, useSlots } from 'vue';
 import { Search } from '@nutui/icons-vue-taro';
+import { Searchbar as NutSearchbar } from '@nutui/nutui-taro';
 
 defineOptions({
   name: 'SearchBar'
@@ -67,6 +68,13 @@ const slots = useSlots();
 
 <style lang="scss">
 .search-bar {
+  --nut-searchbar-padding: 12px 32px;
+  --nut-searchbar-input-background: rgba(0, 0, 0, 0.04);
+  --nut-searchbar-input-box-shadow: none;
+  --nut-searchbar-input-border-radius: 8px;
+  --nut-searchbar-input-padding: 0;
+  --nut-searchbar-input-bar-placeholder-color: rgba(0, 0, 0, 0.25);
+
   .nut-searchbar__iptleft-search-icon {
     width: auto;
     margin-right: 0;

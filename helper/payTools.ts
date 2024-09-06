@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro';
-import { errorModal } from '@/utils';
+import { errorModal } from '../utils';
 
 export const wxPay = async (
   orderId: Numberish,

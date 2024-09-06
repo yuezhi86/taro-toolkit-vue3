@@ -1,4 +1,5 @@
-import { createLock, hideLoading, showLoading } from '@/utils';
+import { ref } from 'vue';
+import { createLock, hideLoading, showLoading } from '../utils';
 
 export type submitOptions = {
   beforeSend?: (() => boolean) | (() => Promise<boolean>);

@@ -19,6 +19,7 @@
 
 <script setup lang="ts">
 import { RectLeft } from '@nutui/icons-vue-taro';
+import { Navbar as NutNavbar } from '@nutui/nutui-taro';
 import Taro from '@tarojs/taro';
 
 defineOptions({

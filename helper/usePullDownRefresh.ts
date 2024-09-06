@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro';
+import Taro, { usePullDownRefresh as onPullDownRefresh } from '@tarojs/taro';
 
 export const usePullDownRefresh = (fetchData: () => any) => {
   onPullDownRefresh(async () => {
