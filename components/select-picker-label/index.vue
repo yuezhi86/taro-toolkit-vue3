@@ -2,7 +2,7 @@
   <div class="select-picker__label">
     <triangle-down
       v-if="iconAlign === 'left'"
-      class="mr-[10px]"
+      style="margin-right: 10rpx;"
       :color="iconColor"
       size="20rpx"
     />
@@ -23,7 +23,7 @@
     </div>
     <triangle-down
       v-if="iconAlign === 'right'"
-      class="ml-[10rpx]"
+      style="margin-left: 10rpx;"
       :color="iconColor"
       size="20rpx"
     />
