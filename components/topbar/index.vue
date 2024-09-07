@@ -9,10 +9,10 @@
     @click-back="handleBack"
   >
     <template #left-show>
-      <rect-left color="#fff" size="36rpx" style="font-weight: 300" />
+      <rect-left :color="fontColor" size="36rpx" style="font-weight: 300" />
     </template>
-    <template #left>
-      <slot name="left"></slot>
+    <template #content>
+      <slot name="title"></slot>
     </template>
   </nut-navbar>
 </template>
@@ -26,19 +26,20 @@ defineOptions({
   name: 'Topbar'
 });
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     title?: string;
     leftShow?: boolean;
+    fontColor?: string;
   }>(),
   {
     title: undefined,
-    leftShow: true
+    leftShow: true,
+    fontColor: '#fff'
   }
 );
 
 const handleBack = () => {
-  if (!props.leftShow) return;
   Taro.navigateBack();
 };
 </script>
@@ -47,7 +48,7 @@ const handleBack = () => {
 @import '@nutui/nutui-taro/dist/packages/navbar/index.scss';
 
 .topbar {
-  --nut-navbar-title-font-color: #fff;
+  --nut-navbar-title-font-color: v-bind(fontColor);
   --nut-navbar-background: rgba(0, 0, 0, 0);
   --nut-navbar-box-shadow: none;
   --nut-navbar-title-font-weight: 600;
