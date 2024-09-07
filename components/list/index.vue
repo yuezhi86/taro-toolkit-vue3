@@ -33,6 +33,7 @@
 <script setup lang="ts">
 import { PropType, ref, computed, watch } from 'vue';
 import Taro from '@tarojs/taro';
+import { listConfig } from './config';
 import LoadingView from '../loading-view/index.vue';
 import Loading from '../loading/index.vue';
 
