@@ -4,6 +4,7 @@
 </template>
 
 <script setup lang="ts">
+import { onBeforeUnmount } from 'vue';
 import Taro from '@tarojs/taro';
 
 defineOptions({
@@ -35,7 +36,7 @@ if (Taro.options.html) {
   };
 }
 
-Taro.onBeforeUnmount(() => {
+onBeforeUnmount(() => {
   imageElements.forEach((el) => {
     el.removeEventListener('tap', handleTap, false);
   });

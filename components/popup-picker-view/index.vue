@@ -99,7 +99,7 @@ $bar-height: 92rpx;
     height: var(--popup-picker-view-bar-height, $bar-height);
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid
+    border-bottom: 1rpx solid
       var(--popup-picker-view-bar-border-color, $border-color-def);
   }
 

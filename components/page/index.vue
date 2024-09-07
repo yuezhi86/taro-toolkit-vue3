@@ -182,7 +182,7 @@ const useDialog = () => {
 
     &__footer.horizontal {
       height: var(--dialog-footer-height, 100rpx);
-      border-top: 1px solid
+      border-top: 1rpx solid
         var(--dialog-footer-border-top-color, $border-color-def);
 
       .nut-button {
@@ -205,7 +205,7 @@ const useDialog = () => {
 
         &.nut-button--plain {
           color: var(--dialog-button-second-color, rgba(0, 0, 0, 0.65));
-          border-right: 1px solid
+          border-right: 1rpx solid
             var(--dialog-button-second-border-right-color, $border-color-def);
         }
       }
