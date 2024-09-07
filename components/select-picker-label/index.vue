@@ -23,7 +23,7 @@
     </div>
     <triangle-down
       v-if="iconAlign === 'right'"
-      class="ml-[10px]"
+      class="ml-[10rpx]"
       :color="iconColor"
       size="20rpx"
     />
@@ -70,13 +70,13 @@ withDefaults(
 
     &-text {
       @include text-overflow();
-      min-width: var(--select-picker-text-min-width, 60px);
-      max-width: var(--select-picker-text-max-width, 200px);
+      min-width: var(--select-picker-text-min-width, 60rpx);
+      max-width: var(--select-picker-text-max-width, 200rpx);
       font-family: var(--select-picker-text-font-family, $font-family);
       font-weight: var(--select-picker-text-font-weight, 400);
-      font-size: var(--select-picker-text-font-size, 26px);
+      font-size: var(--select-picker-text-font-size, 26rpx);
       color: var(--select-picker-text-color, #333);
-      line-height: var(--select-picker-text-line-height, 38px);
+      line-height: var(--select-picker-text-line-height, 38rpx);
     }
 
     &-placeholder {

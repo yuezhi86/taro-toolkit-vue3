@@ -6,9 +6,9 @@
 
 <style lang="scss">
 .agree-h1 {
-  margin-bottom: var(--agree-h1-margin-bottom, 40px);
+  margin-bottom: var(--agree-h1-margin-bottom, 40rpx);
   color: var(--agree-h1-color, #333);
-  font-size: var(--agree-h1-font-size, 36px);
+  font-size: var(--agree-h1-font-size, 36rpx);
   font-weight: bold;
   line-height: var(--agree-h1-line-height, 1);
   text-align: center;

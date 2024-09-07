@@ -72,9 +72,9 @@ defineProps({
 
   &__text {
     display: block;
-    margin-left: var(--loading-view-text-margin-left, 10px);
+    margin-left: var(--loading-view-text-margin-left, 10rpx);
     color: var(--loading-view-text-color, #999);
-    font-size: var(--loading-view-text-font-size, 26px);
+    font-size: var(--loading-view-text-font-size, 26rpx);
   }
 }
 </style>

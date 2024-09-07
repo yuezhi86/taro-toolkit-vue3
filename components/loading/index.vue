@@ -31,13 +31,13 @@ const style = computed(() => ({
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--loading-margin-bottom, 20px);
+  margin-bottom: var(--loading-margin-bottom, 20rpx);
   vertical-align: bottom;
-  width: var(--loading-width, 80px);
-  height: var(--loading-height, 80px);
+  width: var(--loading-width, 80rpx);
+  height: var(--loading-height, 80rpx);
 
   &-icon {
-    font-size: var(--loading-icon-font-size, 72px);
+    font-size: var(--loading-icon-font-size, 72rpx);
     line-height: 1;
   }
 }

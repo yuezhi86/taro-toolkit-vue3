@@ -67,24 +67,26 @@ const slots = useSlots();
 </script>
 
 <style lang="scss">
+@import '@nutui/nutui-taro/dist/packages/searchbar/index.scss';
+
 .search-bar {
-  --nut-searchbar-padding: 12px 32px;
+  --nut-searchbar-padding: 12rpx 32rpx;
   --nut-searchbar-input-background: rgba(0, 0, 0, 0.04);
   --nut-searchbar-input-box-shadow: none;
-  --nut-searchbar-input-border-radius: 8px;
+  --nut-searchbar-input-border-radius: 8rpx;
   --nut-searchbar-input-padding: 0;
   --nut-searchbar-input-bar-placeholder-color: rgba(0, 0, 0, 0.25);
 
   .nut-searchbar__iptleft-search-icon {
     width: auto;
     margin-right: 0;
-    padding-right: 12px;
-    padding-left: 12px;
+    padding-right: 12rpx;
+    padding-left: 12rpx;
     border-right: 1px solid #979797;
   }
 
   .nut-searchbar__search-input .nut-searchbar__input-inner {
-    padding-left: 20px;
+    padding-left: 20rpx;
   }
 
   &__no-left {

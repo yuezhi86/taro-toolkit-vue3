@@ -35,7 +35,7 @@ if (Taro.options.html) {
   };
 }
 
-onBeforeUnmount(() => {
+Taro.onBeforeUnmount(() => {
   imageElements.forEach((el) => {
     el.removeEventListener('tap', handleTap, false);
   });
@@ -46,11 +46,11 @@ onBeforeUnmount(() => {
 @import '../../styles/variable';
 
 .rich-text {
-  padding: var(--rich-text-padding, 32px);
+  padding: var(--rich-text-padding, 32rpx);
   color: var(--rich-text-color, rgba(0, 0, 0, 0.85));
   font-family: var(--rich-text-font-family, $font-family);
-  font-size: var(--rich-text-font-size, 28px);
-  line-height: var(--rich-text-line-height, 44px);
+  font-size: var(--rich-text-font-size, 28rpx);
+  line-height: var(--rich-text-line-height, 44rpx);
   font-weight: var(--rich-text-font-weight, 400);
 
   image {

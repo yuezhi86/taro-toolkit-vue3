@@ -23,15 +23,15 @@ defineOptions({
   left: 0;
   right: 0;
   z-index: var(--fixed-bar-z-index, 900);
-  min-height: var(--fixed-bar-min-height, 148px);
+  min-height: var(--fixed-bar-min-height, 148rpx);
   background-color: var(--fixed-bar-bg-color, #fff);
-  box-shadow: 0px -4px 8px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 -4rpx 8rpx 0 rgba(0, 0, 0, 0.05);
   padding-bottom: env(safe-area-inset-bottom);
 
   &--inner {
     position: relative;
-    @include margin-h(var(--fixed-bar-inner-margin, 40px));
-    @include padding-v(var(--fixed-bar-inner-padding, 26px));
+    @include margin-h(var(--fixed-bar-inner-margin, 40rpx));
+    @include padding-v(var(--fixed-bar-inner-padding, 26rpx));
   }
 }
 </style>

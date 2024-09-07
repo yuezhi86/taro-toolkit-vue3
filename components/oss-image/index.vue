@@ -124,7 +124,7 @@ watch(
 .oss-image {
   overflow: hidden;
   height: 100%;
-  font-size: var(--oss-image-icon-size, 50px);
+  font-size: var(--oss-image-icon-size, 50rpx);
 
   &--loading {
     background-color: var(--oss-image-bg-color, #f5f5f5);

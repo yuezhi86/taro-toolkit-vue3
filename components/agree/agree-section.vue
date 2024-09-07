@@ -6,7 +6,7 @@
 
 <style lang="scss">
 .agree-section {
-  margin-bottom: var(--agree-section-margin-bottom, 40px);
+  margin-bottom: var(--agree-section-margin-bottom, 40rpx);
   &:last-of-type {
     margin-bottom: 0;
   }

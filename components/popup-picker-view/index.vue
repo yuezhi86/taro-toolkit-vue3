@@ -86,8 +86,9 @@ const handleClickOverlay = () => {
 </script>
 
 <style lang="scss">
+@import '@nutui/nutui-taro/dist/packages/popup/index.scss';
 @import '../../styles/variable';
-$bar-height: 92px;
+$bar-height: 92rpx;
 
 .nut-picker {
   position: relative;
@@ -110,7 +111,7 @@ $bar-height: 92px;
     white-space: nowrap;
     text-align: center;
     color: var(--nut-picker-bar-title-color, var(--nut-title-color, #1a1a1a));
-    font-size: var(--nut-picker-bar-title-font-size, 32px);
+    font-size: var(--nut-picker-bar-title-font-size, 32rpx);
     font-weight: var(--nut-picker-bar-title-font-weight, normal);
   }
 
@@ -120,10 +121,10 @@ $bar-height: 92px;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 100px;
+    min-width: 100rpx;
     height: 100%;
     color: var(--nut-picker-cancel-color, #808080);
-    font-size: var(--nut-picker-bar-cancel-font-size, 28px);
+    font-size: var(--nut-picker-bar-cancel-font-size, 28rpx);
   }
 
   &__right {
@@ -132,10 +133,10 @@ $bar-height: 92px;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 100px;
+    min-width: 100rpx;
     height: 100%;
     color: var(--nut-picker-ok-color, var(--nut-primary-color, #fa2c19));
-    font-size: var(--nut-picker-bar-ok-font-size, 28px);
+    font-size: var(--nut-picker-bar-ok-font-size, 28rpx);
   }
 }
 
@@ -143,7 +144,7 @@ $bar-height: 92px;
   &__body {
     position: relative;
     height: 100%;
-    padding: var(--popup-picker-view-body-padding, 14px 0);
+    padding: var(--popup-picker-view-body-padding, 14rpx 0);
   }
 
   &__has-action {
@@ -157,7 +158,7 @@ $bar-height: 92px;
     align-items: center;
     justify-content: center;
     height: 100%;
-    padding: var(--nut-picker-bar-button-padding, 0 30px);
+    padding: var(--nut-picker-bar-button-padding, 0 30rpx);
   }
 }
 </style>

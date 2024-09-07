@@ -245,19 +245,19 @@ const handleChecked = (item: AnyObject, i) => {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      column-gap: var(--popup-picker-column-gap, 20px);
+      column-gap: var(--popup-picker-column-gap, 20rpx);
       min-width: 0;
-      padding: var(--popup-picker-wrap-padding, 28px 32px);
+      padding: var(--popup-picker-wrap-padding, 28rpx 32rpx);
     }
 
     &-label {
       @include text-overflow();
-      min-height: var(--popup-picker-label-min-height, 44px);
+      min-height: var(--popup-picker-label-min-height, 44rpx);
       font-family: var(--popup-picker-label-font-family, $font-family);
       font-weight: var(--popup-picker-label-font-weight, 400);
-      font-size: var(--popup-picker-label-font-size, 28px);
+      font-size: var(--popup-picker-label-font-size, 28rpx);
       color: var(--popup-picker-label-color, rgba(0, 0, 0, 0.65));
-      line-height: var(--popup-picker-label-line-height, 44px);
+      line-height: var(--popup-picker-label-line-height, 44rpx);
     }
 
     &-left {

@@ -141,6 +141,8 @@ const useDialog = () => {
 </script>
 
 <style lang="scss">
+@import '@nutui/nutui-taro/dist/packages/toast/index.scss';
+@import '@nutui/nutui-taro/dist/packages/dialog/index.scss';
 @import '../../styles/variable';
 
 .page-root {
@@ -170,16 +172,16 @@ const useDialog = () => {
   }
 
   .nut-dialog {
-    padding: var(--dialog-padding, 48px 0 0);
-    font-size: var(--dialog-font-size, 30px);
+    padding: var(--dialog-padding, 48rpx 0 0);
+    font-size: var(--dialog-font-size, 30rpx);
 
     &__content {
-      padding: var(--dialog-content-padding, 0 48px);
+      padding: var(--dialog-content-padding, 0 48rpx);
       font-size: inherit !important;
     }
 
     &__footer.horizontal {
-      height: var(--dialog-footer-height, 100px);
+      height: var(--dialog-footer-height, 100rpx);
       border-top: 1px solid
         var(--dialog-footer-border-top-color, $border-color-def);
 
@@ -198,7 +200,7 @@ const useDialog = () => {
         color: var(--dialog-button-color, $color-primary);
         font-family: var(--dialog-button-font-family, $font-family);
         font-weight: var(--dialog-button-font-weight, 500);
-        font-size: var(--dialog-button-font-size, 36px);
+        font-size: var(--dialog-button-font-size, 36rpx);
         line-height: var(--dialog-button-line-height, 1);
 
         &.nut-button--plain {

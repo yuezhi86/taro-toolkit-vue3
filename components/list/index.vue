@@ -303,36 +303,36 @@ function preprocessQuery(data: AnyObject) {
 }
 
 .x-list-status {
-  @include padding-v(var(--list-status-padding, 30px));
+  @include padding-v(var(--list-status-padding, 30rpx));
   color: var(--list-status-color, #999);
-  font-size: var(--list-status-font-size, 24px);
-  line-height: var(--list-status-line-height, 40px);
+  font-size: var(--list-status-font-size, 24rpx);
+  line-height: var(--list-status-line-height, 40rpx);
   text-align: center;
 
   .x-list-img {
-    width: var(--list-img-width, 40px);
-    height: var(--list-img-height, 40px);
-    margin-right: var(--list-img-margin-right, 10px);
+    width: var(--list-img-width, 40rpx);
+    height: var(--list-img-height, 40rpx);
+    margin-right: var(--list-img-margin-right, 10rpx);
     margin-bottom: var(--list-img-margin-bottom, 0);
     vertical-align: bottom;
 
     .x-loading-icon {
-      font-size: var(--list-loading-icon-font-size, 40px);
+      font-size: var(--list-loading-icon-font-size, 40rpx);
     }
   }
 }
 
 .x-list-nodata {
-  padding-top: var(--list-nodata-padding-top, 230px);
+  padding-top: var(--list-nodata-padding-top, 230rpx);
   color: var(--list-nodata-color, #999);
-  font-size: var(--list-nodata-font-size, 28px);
+  font-size: var(--list-nodata-font-size, 28rpx);
   font-family: var(--list-nodata-font-family, $font-family-regular);
   text-align: center;
-  line-height: var(--list-nodata-line-height, 44px);
+  line-height: var(--list-nodata-line-height, 44rpx);
 
   .x-list-nodata-img {
-    width: var(--list-nodata-img-width, 340px);
-    height: var(--list-nodata-img-height, 340px);
+    width: var(--list-nodata-img-width, 340rpx);
+    height: var(--list-nodata-img-height, 340rpx);
   }
 }
 </style>
