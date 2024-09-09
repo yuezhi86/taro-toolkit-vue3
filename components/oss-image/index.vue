@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onUnmounted } from 'vue';
+import { ref, watch, onMounted, onUnmounted } from 'vue';
 import Taro from '@tarojs/taro';
 import { ImageError, Loading1 } from '@nutui/icons-vue-taro';
 import { randomStr } from '../../utils';
@@ -139,13 +139,17 @@ watch(
 );
 
 let inst: any = Taro.createIntersectionObserver(imgRef.value);
-inst.relativeToViewport({ bottom: 100 }).observe(`#img${id.value}`, () => {
-  if (init.value) return;
-  imgUrl.value = imgSrc.value;
-  loading.value = !!imgUrl.value;
-  init.value = true;
-});
 
+onMounted(() => {
+  Taro.nextTick(() => {
+    inst.relativeToViewport({ bottom: 100 }).observe(`#img${id.value}`, () => {
+      if (init.value) return;
+      imgUrl.value = imgSrc.value;
+      loading.value = !!imgUrl.value;
+      init.value = true;
+    });
+  });
+});
 onUnmounted(() => {
   inst.disconnect();
   inst = null;
