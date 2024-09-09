@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref, watch, onUnmounted } from 'vue';
 import Taro from '@tarojs/taro';
 import { ImageError, Loading1 } from '@nutui/icons-vue-taro';
 import { randomStr } from '../../utils';
@@ -94,8 +94,9 @@ const loading = ref(false);
 const error = ref(false);
 const imgMode = ref(props.mode);
 
-const setState = () => {
+const setSrc = () => {
   if (!props.src) {
+    imgSrc.value = '';
     error.value = true;
     loading.value = false;
     return;
@@ -111,20 +112,6 @@ const setState = () => {
     .replace(/\${h}/, `${parseInt(props.height)}`);
   imgSrc.value = props.src ? `${props.src}?x-oss-process=image/${_rule}` : '';
 };
-
-let inst: any = Taro.createIntersectionObserver(imgRef.value);
-inst.relativeToViewport({ bottom: 100 }).observe(`#img${id.value}`, () => {
-  if (init.value) return;
-  loading.value = true;
-  imgUrl.value = imgSrc.value;
-  init.value = true;
-});
-
-onUnmounted(() => {
-  inst.disconnect();
-  inst = null;
-});
-
 const onLoad = (e: Event) => {
   if (error.value) return;
   error.value = false;
@@ -141,14 +128,28 @@ const onError = (e: Event) => {
 watch(
   () => props.src,
   () => {
+    init.value = false;
     error.value = false;
-    loading.value = true;
-    setState();
+    loading.value = false;
+    setSrc();
   },
   {
     immediate: true
   }
 );
+
+let inst: any = Taro.createIntersectionObserver(imgRef.value);
+inst.relativeToViewport({ bottom: 100 }).observe(`#img${id.value}`, () => {
+  if (init.value) return;
+  imgUrl.value = imgSrc.value;
+  loading.value = !!imgUrl.value;
+  init.value = true;
+});
+
+onUnmounted(() => {
+  inst.disconnect();
+  inst = null;
+});
 </script>
 
 <style lang="scss">
@@ -164,6 +165,7 @@ watch(
       position: absolute;
       top: 0;
       left: 0;
+      z-index: 1;
       width: 100%;
       height: 100%;
       display: flex;
@@ -179,6 +181,7 @@ watch(
 
   &--error {
     position: relative;
+    z-index: 2;
     background-color: #f5f5f5;
 
     &-icon,
