@@ -15,3 +15,4 @@ export * from './sleep';
 export * from './toFixed';
 export * from './formatNumber';
 export * from './parseJsonData';
+export * from './randomStr';

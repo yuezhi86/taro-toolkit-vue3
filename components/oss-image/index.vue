@@ -1,11 +1,18 @@
 <template>
   <view
+    :id="'img' + id"
+    ref="imgRef"
     class="oss-image"
     :class="{
       'oss-image--error': error,
-      'oss-image-loading': loading
+      'oss-image--loading': loading
     }"
   >
+    <view v-if="loading" class="oss-image--loading-content">
+      <loading1
+        class="nut-icon-am-rotate nut-icon-am-infinite oss-image--loading-icon"
+      />
+    </view>
     <image-error v-if="error && !defaultImg" class="oss-image--error-icon" />
     <image
       v-else-if="error && defaultImg"
@@ -17,17 +24,16 @@
       mode="aspectFit"
     />
     <image
-      v-else
+      v-else-if="init"
       v-bind="$attrs"
       class="oss-img"
       :style="{
         width,
         height
       }"
-      :src="imgSrc"
+      :src="imgUrl"
       :mode="imgMode"
       :webp="webp"
-      :lazy-load="lazyLoad"
       :show-menu-by-longpress="showMenuByLongpress"
       @load="onLoad"
       @error="onError"
@@ -37,7 +43,9 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-import { ImageError } from '@nutui/icons-vue-taro';
+import Taro from '@tarojs/taro';
+import { ImageError, Loading1 } from '@nutui/icons-vue-taro';
+import { randomStr } from '../../utils';
 
 defineOptions({
   name: 'OssImage',
@@ -51,10 +59,13 @@ const props = withDefaults(
     width?: string;
     height?: string;
     mode?: string;
-    lazyLoad?: boolean;
     webp?: boolean;
     showMenuByLongpress?: boolean;
     defaultImg?: string;
+    iconColor?: string;
+    iconSize?: string;
+    loadingColor?: string;
+    loadingSize?: string;
     rule?: string;
     enableRule?: boolean;
     errorImgFull?: boolean;
@@ -64,15 +75,22 @@ const props = withDefaults(
     width: undefined,
     height: undefined,
     defaultImg: undefined,
+    iconColor: '#ccc',
+    iconSize: '50rpx',
+    loadingColor: '#ccc',
+    loadingSize: '40rpx',
     rule: 'resize,m_fixed,h_${h},w_${w}',
     mode: 'aspectFill',
-    lazyLoad: true,
     enableRule: true
   }
 );
 
+const id = ref(randomStr(10));
+const imgRef = ref<any>(null);
 const imgSrc = ref('');
-const loading = ref(true);
+const imgUrl = ref('');
+const init = ref(false);
+const loading = ref(false);
 const error = ref(false);
 const imgMode = ref(props.mode);
 
@@ -94,6 +112,19 @@ const setState = () => {
   imgSrc.value = props.src ? `${props.src}?x-oss-process=image/${_rule}` : '';
 };
 
+let inst: any = Taro.createIntersectionObserver(imgRef.value);
+inst.relativeToViewport({ bottom: 100 }).observe(`#img${id.value}`, () => {
+  if (init.value) return;
+  loading.value = true;
+  imgUrl.value = imgSrc.value;
+  init.value = true;
+});
+
+onUnmounted(() => {
+  inst.disconnect();
+  inst = null;
+});
+
 const onLoad = (e: Event) => {
   if (error.value) return;
   error.value = false;
@@ -111,7 +142,7 @@ watch(
   () => props.src,
   () => {
     error.value = false;
-    loading.value = false;
+    loading.value = true;
     setState();
   },
   {
@@ -124,15 +155,31 @@ watch(
 .oss-image {
   overflow: hidden;
   height: 100%;
-  font-size: var(--oss-image-icon-size, 50rpx);
 
   &--loading {
-    background-color: var(--oss-image-bg-color, #f5f5f5);
+    position: relative;
+    background-color: #f5f5f5;
+
+    &-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &-icon {
+      color: v-bind(loadingColor);
+      font-size: v-bind(loadingSize);
+    }
   }
 
   &--error {
     position: relative;
-    background-color: var(--oss-image-bg-color, #f5f5f5);
+    background-color: #f5f5f5;
 
     &-icon,
     &-img {
@@ -145,8 +192,8 @@ watch(
     }
 
     &-icon {
-      color: var(--oss-image-icon-color, #ccc);
-      font-size: 1em;
+      color: v-bind(iconColor);
+      font-size: v-bind(iconSize);
     }
 
     &-img-full {
