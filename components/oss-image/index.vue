@@ -130,7 +130,7 @@ watch(
   () => {
     init.value = false;
     error.value = false;
-    loading.value = false;
+    loading.value = true;
     setSrc();
   },
   {
