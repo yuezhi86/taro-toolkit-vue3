@@ -24,14 +24,14 @@
       mode="aspectFit"
     />
     <image
-      v-else-if="init"
+      v-else-if="firstLoad"
       v-bind="$attrs"
       class="oss-img"
       :style="{
         width,
         height
       }"
-      :src="imgUrl"
+      :src="imgSrc"
       :mode="imgMode"
       :webp="webp"
       :show-menu-by-longpress="showMenuByLongpress"
@@ -66,6 +66,7 @@ const props = withDefaults(
     iconSize?: string;
     loadingColor?: string;
     loadingSize?: string;
+    lazyLoad?: boolean;
     rule?: string;
     enableRule?: boolean;
     errorImgFull?: boolean;
@@ -81,36 +82,45 @@ const props = withDefaults(
     loadingSize: '40rpx',
     rule: 'resize,m_fixed,h_${h},w_${w}',
     mode: 'aspectFill',
+    lazyLoad: true,
     enableRule: true
   }
 );
 
 const id = ref(randomStr(10));
 const imgRef = ref<any>(null);
+const url = ref('');
 const imgSrc = ref('');
-const imgUrl = ref('');
-const init = ref(false);
+const firstLoad = ref(false);
 const loading = ref(false);
 const error = ref(false);
 const imgMode = ref(props.mode);
 
+const isShow = ref(false);
 const setSrc = () => {
   if (!props.src) {
-    imgSrc.value = '';
+    url.value = '';
     error.value = true;
     loading.value = false;
+    firstLoad.value = true;
     return;
   }
 
   if (!props.width || !props.height) {
-    imgSrc.value = props.src ?? '';
+    url.value = props.src ?? '';
     return;
   }
 
   const _rule = props.rule
     .replace(/\${w}/, `${parseInt(props.width)}`)
     .replace(/\${h}/, `${parseInt(props.height)}`);
-  imgSrc.value = props.src ? `${props.src}?x-oss-process=image/${_rule}` : '';
+  url.value = props.src ? `${props.src}?x-oss-process=image/${_rule}` : '';
+
+  if (!props.lazyLoad || firstLoad.value || !isShow.value) {
+    imgSrc.value = url.value;
+    loading.value = !!imgSrc.value;
+    firstLoad.value = true;
+  }
 };
 const onLoad = (e: Event) => {
   if (error.value) return;
@@ -128,7 +138,6 @@ const onError = (e: Event) => {
 watch(
   () => props.src,
   () => {
-    init.value = false;
     error.value = false;
     loading.value = true;
     setSrc();
@@ -140,13 +149,20 @@ watch(
 
 let inst: any = Taro.createIntersectionObserver(imgRef.value);
 
+Taro.useDidShow(() => {
+  isShow.value = true;
+});
+Taro.useDidHide(() => {
+  isShow.value = false;
+});
 onMounted(() => {
+  if (!props.lazyLoad || firstLoad.value) return;
   Taro.nextTick(() => {
     inst.relativeToViewport({ bottom: 100 }).observe(`#img${id.value}`, () => {
-      if (init.value) return;
-      imgUrl.value = imgSrc.value;
-      loading.value = !!imgUrl.value;
-      init.value = true;
+      if (firstLoad.value) return;
+      imgSrc.value = url.value;
+      loading.value = !!imgSrc.value;
+      firstLoad.value = true;
     });
   });
 });
