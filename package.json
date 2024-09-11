@@ -1,9 +1,23 @@
 {
   "name": "taro-toolkit-vue3",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "",
   "author": "",
   "license": "MIT",
+  "peerDependencies": {
+    "@nutui/icons-vue-taro": "^0.0.9",
+    "@nutui/nutui-taro": "^4.0.0",
+    "@tarojs/components": "^3.6.0",
+    "@tarojs/helper": "^3.6.0",
+    "@tarojs/plugin-framework-vue3": "^3.6.0",
+    "@tarojs/plugin-html": "^3.6.0",
+    "@tarojs/runtime": "^3.6.0",
+    "@tarojs/shared": "^3.6.0",
+    "@tarojs/taro": "^3.6.0",
+    "dayjs": "^1.0.0",
+    "lodash-es": "^4.0.0",
+    "vue": "^3.0.0"
+  },
   "dependencies": {
     "@babel/runtime": "^7.24.7",
     "@nutui/icons-vue-taro": "^0.0.9",
