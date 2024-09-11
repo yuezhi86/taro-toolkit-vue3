@@ -106,15 +106,13 @@ const setSrc = () => {
     return;
   }
 
-  if (!props.width || !props.height) {
+  if (!props.enableRule || !props.width || !props.height) {
     url.value = props.src;
   } else {
-    const _rule = props.rule
+    const rule = props.rule
       .replace(/\${w}/, `${parseInt(props.width)}`)
       .replace(/\${h}/, `${parseInt(props.height)}`);
-    url.value = props.enableRule
-      ? `${props.src}?x-oss-process=image/${_rule}`
-      : props.src;
+    url.value = `${props.src}?x-oss-process=image/${rule}`;
   }
 
   if (!props.lazyLoad || firstLoad.value || !isShow.value) {
