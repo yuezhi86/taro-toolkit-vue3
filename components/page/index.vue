@@ -13,6 +13,9 @@
   >
     <slot></slot>
     <template #outer>
+      <div v-show="showBackTopBtn" class="back-top" @click="handleBackTop">
+        <top class="back-top__icon" />
+      </div>
       <nut-toast v-model:visible="toast.show" v-bind="toast" />
       <nut-dialog
         v-model:visible="dialog.show"
@@ -29,14 +32,16 @@
 
 <script setup lang="ts">
 import { computed, provide, useSlots } from 'vue';
+import Taro from '@tarojs/taro';
 import LoadingView from '../loading-view/index.vue';
 import { Toast as NutToast, Dialog as NutDialog } from '@nutui/nutui-taro';
+import { Top } from '@nutui/icons-vue-taro';
 
 defineOptions({
   name: 'PageRoot'
 });
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     show?: boolean;
     loadingHideContent?: boolean;
@@ -45,6 +50,8 @@ withDefaults(
     showAction?: boolean;
     fullscreen?: boolean;
     actionHeight?: string;
+    showBackTop?: boolean;
+    backTopScreenNum?: number;
   }>(),
   {
     loadingHideContent: true,
@@ -52,9 +59,23 @@ withDefaults(
     scale: 1,
     showAction: true,
     fullscreen: true,
-    actionHeight: '140rpx'
+    actionHeight: '140rpx',
+    backTopScreenNum: 2
   }
 );
+
+const windowInfo = Taro.getWindowInfo();
+const showBackTopBtn = ref(false);
+Taro.usePageScroll(({ scrollTop }) => {
+  showBackTopBtn.value =
+    scrollTop > props.backTopScreenNum * windowInfo.windowHeight;
+});
+
+const handleBackTop = () => {
+  Taro.pageScrollTo({
+    scrollTop: 0
+  });
+};
 
 const slots = useSlots();
 const hasAction = computed(() => slots.actions);
@@ -211,5 +232,20 @@ const useDialog = () => {
       }
     }
   }
+}
+
+.back-top {
+  position: fixed;
+  bottom: calc(40px + env(safe-area-inset-bottom));
+  right: 20px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  width: 80px;
+  background: var(--backtop-bg-color, #fff);
+  border: 1px solid var(--backtop-border-color, #e0e0e0);
+  border-radius: 50%;
 }
 </style>
