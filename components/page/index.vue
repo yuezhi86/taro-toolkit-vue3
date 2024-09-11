@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, provide, useSlots } from 'vue';
+import { ref, computed, provide, useSlots } from 'vue';
 import Taro from '@tarojs/taro';
 import LoadingView from '../loading-view/index.vue';
 import { Toast as NutToast, Dialog as NutDialog } from '@nutui/nutui-taro';
