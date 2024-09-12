@@ -236,14 +236,14 @@ const useDialog = () => {
 
 .back-top {
   position: fixed;
-  bottom: calc(40rpx + env(safe-area-inset-bottom));
-  right: 20rpx;
-  z-index: 100;
+  bottom: calc(var(--backtop-bottom, 40rpx) + env(safe-area-inset-bottom));
+  right: var(--backtop-right, 20rpx);
+  z-index: var(--backtop-zindex, 100);
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80rpx;
-  width: 80rpx;
+  width: var(--backtop-width, 80rpx);
+  height: var(--backtop-height, 80rpx);
   background: var(--backtop-bg-color, #fff);
   border: 1rpx solid var(--backtop-border-color, #e0e0e0);
   border-radius: 50%;
