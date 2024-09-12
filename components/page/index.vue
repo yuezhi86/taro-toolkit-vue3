@@ -236,16 +236,16 @@ const useDialog = () => {
 
 .back-top {
   position: fixed;
-  bottom: calc(40px + env(safe-area-inset-bottom));
-  right: 20px;
+  bottom: calc(40rpx + env(safe-area-inset-bottom));
+  right: 20rpx;
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80px;
-  width: 80px;
+  height: 80rpx;
+  width: 80rpx;
   background: var(--backtop-bg-color, #fff);
-  border: 1px solid var(--backtop-border-color, #e0e0e0);
+  border: 1rpx solid var(--backtop-border-color, #e0e0e0);
   border-radius: 50%;
 }
 </style>
