@@ -56,3 +56,45 @@ export function dictToArray(
 
   return ret.filter((item) => item !== undefined);
 }
+
+export type ArrayToDictOptions = {
+  labelKey?: string;
+  valueKey?: string;
+  includes?: NumberishArray;
+  excludes?: NumberishArray;
+};
+export function arrayToDict(
+  array: AnyObject[] = [],
+  options: ArrayToDictOptions = {}
+) {
+  const labelKey = options.labelKey ?? 'value';
+  const valueKey = options.valueKey ?? 'label';
+  const excludes = (options.excludes ?? []).map((item) => String(item));
+  const includes = (options.includes ?? []).map((item) => String(item));
+  const ret = {};
+  array.forEach((item) => {
+    ret[item[labelKey]] = item[valueKey];
+  });
+
+  const keys = Object.keys(ret)
+    .filter((item) => (excludes.length ? !excludes.includes(item) : true))
+    .filter((item) => (includes.length ? includes.includes(item) : true));
+
+  Object.keys(ret).forEach((item) => {
+    if (!keys.includes(item[labelKey])) {
+      delete ret[labelKey];
+    }
+  });
+
+  return ret;
+}
+
+export function arrayToEnum(
+  array: AnyObject[] = [],
+  options: ArrayToDictOptions = {
+    labelKey: 'label',
+    valueKey: 'value'
+  }
+) {
+  return arrayToDict(array, options);
+}

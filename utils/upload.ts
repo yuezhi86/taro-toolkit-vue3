@@ -17,7 +17,10 @@ export const createUpload = (options: CreateRequestOptions) => {
   const {
     requestDomain,
     responseFields,
+    successCode,
     loginErrorCode,
+    maxMessageLength = 50,
+    customErrorMessage = '系统错误',
     getRequestHeaders,
     navigateToLoginPage
   } = options;
@@ -38,7 +41,7 @@ export const createUpload = (options: CreateRequestOptions) => {
       options.url = options.customDomain ? url : `${requestDomain}${url}`;
       options.name = options.name ?? 'file';
       options.filePath = filePath;
-      options.header = await getRequestHeaders?.() ?? {};
+      options.header = (await getRequestHeaders?.()) ?? {};
       options.success = (response: any) => {
         if (response.statusCode === 200) {
           let res = response.data;
@@ -55,7 +58,7 @@ export const createUpload = (options: CreateRequestOptions) => {
 
           // 拦截返回结果，对retCode统一处理
           if (catchRes) {
-            if (code === 1) {
+            if (code === successCode) {
               resolve(data);
             } else if (loginErrorCode.includes(code)) {
               Taro.hideLoading();
@@ -68,8 +71,11 @@ export const createUpload = (options: CreateRequestOptions) => {
               Taro.hideLoading();
 
               if (catchFail) {
-                const text = message?.length > 50 ? '系统错误' : message;
-                errorModal(text ?? '系统错误');
+                const text =
+                  message?.length > maxMessageLength
+                    ? customErrorMessage
+                    : message;
+                errorModal(text ?? customErrorMessage);
               }
 
               reject(res);
@@ -82,10 +88,10 @@ export const createUpload = (options: CreateRequestOptions) => {
 
           if (catchError) {
             const text =
-              response.data.error?.length > 50
-                ? '系统错误'
+              response.data.error?.length > maxMessageLength
+                ? customErrorMessage
                 : response.data.error;
-            errorModal(text ?? '系统错误');
+            errorModal(text ?? customErrorMessage);
           }
 
           reject(response);
@@ -95,8 +101,11 @@ export const createUpload = (options: CreateRequestOptions) => {
         Taro.hideLoading();
 
         if (catchError) {
-          const text = err.errMsg?.length > 50 ? '系统错误' : err.errMsg;
-          errorModal(text ?? '系统错误');
+          const text =
+            err.errMsg?.length > maxMessageLength
+              ? customErrorMessage
+              : err.errMsg;
+          errorModal(text ?? customErrorMessage);
         }
 
         reject(err);

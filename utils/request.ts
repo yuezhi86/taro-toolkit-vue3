@@ -22,13 +22,19 @@ export interface CreateRequestOptions {
     data: string;
     message: string;
   };
+  successCode?: number;
+  maxMessageLength?: number;
+  customErrorMessage?: string;
 }
 
 export const createRequest = (options: CreateRequestOptions) => {
   const {
     requestDomain,
     responseFields,
+    successCode = 1,
     loginErrorCode,
+    maxMessageLength = 50,
+    customErrorMessage = '系统错误',
     getRequestHeaders,
     navigateToLoginPage
   } = options;
@@ -64,7 +70,7 @@ export const createRequest = (options: CreateRequestOptions) => {
 
           // 拦截返回结果，对retCode统一处理
           if (catchRes) {
-            if (code === 1) {
+            if (code === successCode) {
               resolve(data);
             } else if (loginErrorCode.includes(code)) {
               Taro.hideLoading();
@@ -77,8 +83,11 @@ export const createRequest = (options: CreateRequestOptions) => {
               Taro.hideLoading();
 
               if (catchFail) {
-                const text = message?.length > 50 ? '系统错误' : message;
-                errorModal(text ?? '系统错误');
+                const text =
+                  message?.length > maxMessageLength
+                    ? customErrorMessage
+                    : message;
+                errorModal(text ?? customErrorMessage);
               }
 
               reject(res);
@@ -91,10 +100,10 @@ export const createRequest = (options: CreateRequestOptions) => {
 
           if (catchError) {
             const text =
-              response.data.error?.length > 50
-                ? '系统错误'
+              response.data.error?.length > maxMessageLength
+                ? customErrorMessage
                 : response.data.error;
-            errorModal(text ?? '系统错误');
+            errorModal(text ?? customErrorMessage);
           }
 
           reject(response);
@@ -105,14 +114,17 @@ export const createRequest = (options: CreateRequestOptions) => {
         Taro.hideLoading();
 
         if (catchError) {
-          const text = err.errMsg?.length > 50 ? '系统错误' : err.errMsg;
-          errorModal(text ?? '系统错误');
+          const text =
+            err.errMsg?.length > maxMessageLength
+              ? customErrorMessage
+              : err.errMsg;
+          errorModal(text ?? customErrorMessage);
         }
 
         reject(err);
       };
 
-      options.header = await getRequestHeaders?.() ?? {};
+      options.header = (await getRequestHeaders?.()) ?? {};
 
       options.contentType = options.contentType || 'json';
 
