@@ -57,6 +57,7 @@ defineProps({
   &__loading {
     position: absolute;
     left: 50%;
+    z-index: var(--loading-view-loading-zindex, 100);
     transform: translate(-50%, -50%);
     color: var(--loading-view-loading-color, $color-primary);
     text-align: center;
