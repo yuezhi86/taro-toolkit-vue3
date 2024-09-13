@@ -2,9 +2,11 @@ import { ref, inject } from 'vue';
 import { showToast as Toast } from '../../utils';
 
 export const usePage = () => {
+  const show = ref(false);
   const pageRef: any = ref(null);
 
   return {
+    show,
     pageRef,
     showToast: (message: string, options?: AnyObject) => {
       if (pageRef.value) {
