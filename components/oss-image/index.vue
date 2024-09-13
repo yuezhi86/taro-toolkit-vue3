@@ -178,7 +178,7 @@ onUnmounted(() => {
 
   &--loading {
     position: relative;
-    background-color: #f5f5f5;
+    background-color: var(--oss-image-loading-bg-color, #f5f5f5);
 
     &-content {
       position: absolute;
@@ -201,7 +201,7 @@ onUnmounted(() => {
   &--error {
     position: relative;
     z-index: 2;
-    background-color: #f5f5f5;
+    background-color: var(--oss-image-error-bg-color, #f5f5f5);
 
     &-icon,
     &-img {
